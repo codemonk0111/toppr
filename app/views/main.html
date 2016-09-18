@@ -1,0 +1,25 @@
+<div class="container">
+    <h3 ng-init="init()">Find the best online website!</h3>
+    <div class="input-group">
+        <span class="input-group-addon"><div class="glyphicon glyphicon-search"></div></span>
+        <input class="form-control" type="text" ng-model="$parent.searchText" placeholder="Search as you type (by title, url or tag)" ng-change="searchTextChanged()">
+    </div>
+    <br>
+    <div class="thumbnail right-caption span4" dir-paginate="site in websites | filter: searchText | itemsPerPage: pageSize" current-page="currentPage">
+        <img ng-src="{{site.favicon_image}}" style="height:100px;" alt="">
+        <div class="caption">
+            <h5>{{site.title}}</h5>
+            <p>
+                <span class="glyphicon glyphicon-tag pipe"></span><span>{{' ' + site.tag}}</span>
+                <span class="pipe">|</span>
+                <span class="glyphicon glyphicon-link pipe"></span>
+                <a href="{{site.url_address}}" target="_blank">{{site.url_address.length > 35 ? site.url_address.substr(0,32) + '...' : site.url_address}}</a>
+            </p>
+        </div>
+        <span class="pull-right">
+        <button class="btn btn-success glyphicon glyphicon-thumbs-up pull-right" ng-click="incrementLikes(site.id)"><strong>{{ ' ' + getLikes(site.id)}}</strong></button>
+        </span>
+        <div class="clearfix"></div>
+    </div>
+    <dir-pagination-controls boundary-links="true" template-url="bower_components/angularUtils-pagination/dirPagination.tpl.html"></dir-pagination-controls>
+</div>

@@ -1,0 +1,31 @@
+<div class="container">
+<h3>Contribute / Add Website </h3>
+<h6>Your contribution will look like</h6>
+<div class="thumbnail right-caption span4">
+        <img ng-src="https://placehold.it/200X200 " style="height:100px; " alt=" ">
+        <div class="caption ">
+            <h5>{{title || 'Title Here'}}</h5>
+            <p>
+                <span class="glyphicon glyphicon-tag pipe "></span><span>{{tag.length>0 ? ' ' + tag : 'Tag Here'}}</span>
+                <span class="pipe ">|</span>
+                <span class="glyphicon glyphicon-link pipe "></span>
+                <a href="{{url_address}} " target="_blank ">{{(url_address.length > 35 ? url_address.substr(0,32) + '...' : url_address) || 'http://example.com'}}</a>
+            </p>
+        </div>
+        <span class="pull-right ">
+        <button class="btn btn-success glyphicon glyphicon-thumbs-up pull-right " ng-click=" "><strong>{{ ' ' + 5}}</strong></button>
+        </span>
+        <div class="clearfix "></div>
+    </div>
+    <div class="clearfix"></div>
+<form class="form">
+<div class="form-group">
+<center><div class="btn-warning" ng-show="error">{{error}}</div></center>
+<br>
+<input class="form-control" type="text" name="title" ng-model="title" placeholder="Title"><br>
+<input class="form-control" type="text" name="url" ng-model="url_address" placeholder="URL Address"><br>
+<input class="form-control" type="text" name="tag" ng-model="tag" placeholder="Tag"><br>
+<button class="form-control btn btn-info" ng-click="submitData();">Submit</button>
+</div>
+</form>
+</div>
